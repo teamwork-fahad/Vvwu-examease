@@ -132,7 +132,7 @@
                                         <i class="ti ti-user"></i>
                                         <span>Social Profile</span>
                                     </a>
-                                    <a href="../pages/login-v1.html" class="dropdown-item">
+                                    <a href="logout.php" class="dropdown-item">
                                         <i class="ti ti-logout"></i>
                                         <span>Logout</span>
                                     </a>
