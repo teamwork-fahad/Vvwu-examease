@@ -1,13 +1,12 @@
 <ul class="pc-navbar">
-<li class="pc-item pc-caption">
-          <label>Dashboard</label>
-          <i class="ti ti-dashboard"></i>
-        </li>
-        <li class="pc-item">
-          <a href="dashboard.php" class="pc-link"
-            ><span class="pc-micon"><i class="ti ti-dashboard"></i></span><span class="pc-mtext">Index</span></a
-          >
-        </li>
+    <li class="pc-item pc-caption">
+        <label>Dashboard</label>
+        <i class="ti ti-dashboard"></i>
+    </li>
+    <li class="pc-item">
+        <a href="dashboard.php" class="pc-link"><span class="pc-micon"><i class="ti ti-dashboard"></i></span><span
+                class="pc-mtext">Index</span></a>
+    </li>
     <li class="pc-item pc-caption">
         <label>Navigation</label>
         <i class="ti ti-brand-chrome"></i>
@@ -36,5 +35,12 @@
 
         </ul>
     </li>
-
+    <li class="pc-item">
+        <a href="department.php" class="pc-link"><span class="pc-micon"><i class="ti ti-building"></i></span><span
+                class="pc-mtext">Department</span></a>
+    </li>
+    <li class="pc-item">
+        <a href="sub_wise_fac.php" class="pc-link"><span class="pc-micon"><i class="ti ti-building"></i></span><span
+                class="pc-mtext">Faculty-Subject</span></a>
+    </li>
 </ul>

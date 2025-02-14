@@ -1,29 +1,74 @@
 <?php
+    session_start();
     include('../connection.php');
+    if(isset($_POST['btnRegister']))
+    {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $mobile = $_POST['mobile'];
+        $password = $_POST['password'];
+        $department = $_POST['department'];
+
+        // Add your sign-up logic here
+        $sql = "INSERT INTO `faculty` (`faculty_name`, `email`, `phone`, `did`, `pass`) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssis", $name, $email, $mobile, $department, $password);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('New faculty member added successfully.');</script>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $stmt->close();
+        $conn->close();
+    }
     if(isset($_POST['btnLogin']))
     {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
+        $email = $_POST['email1'];
+        $password = $_POST['password1'];        
         $query = "SELECT * FROM faculty WHERE email = '$email' AND pass = '$password'";
-       
         $result = mysqli_query($conn, $query);
-       
         $record=mysqli_num_rows($result);
-        
+       // echo $query;
+       // exit();
         if($record==1)
         {
+            $faculty_data=mysqli_fetch_assoc($result);
+            $status = $faculty_data['status'];
+            if($status == 0)
+            {
+                echo "<script>
+                    alert('Your account is not activated yet');
+                    window.location.href = window.location.href;
+                </script>";
+            }
+            else if($status==1)
+            {
             $_SESSION['email'] = $email;
-            header('Location:index.php');
+            $otp = rand(100000, 999999);
+            $_SESSION['otp'] = $otp;
+            header('Location:verify_otp.php');
+            }
+            else 
+            {
+                echo "<script>
+                    alert('Your account is blocked');
+                    window.location.href = window.location.href; 
+                </script>";           
+            }
         }
         else
         {
-           
-        echo "<script>alert('Invalid email or password');</script>";
+        echo "<script>
+            alert('Invalid email or password');
+            window.location.href = window.location.href;
+        </script>";
        
         }
        exit();
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +76,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Rotation Login / Signup Box</title>
+    <title>Faculty Login / Signup Box</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@1.13.12/iconfont/material-icons.min.css">
@@ -564,13 +609,13 @@
                                                 <h4 class="heading">Faculty Log In</h4>
                                                 <div class="form-group">
                                                     <input type="email" class="form-style" placeholder="Your Email"
-                                                        autocomplete="off" name="email">
+                                                        autocomplete="off" name="email1">
                                                     <i class="input-icon material-icons">alternate_email</i>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <input type="password" class="form-style"
-                                                        placeholder="Your Password" autocomplete="off" name="password">
+                                                        placeholder="Your Password" autocomplete="off" name="password1">
                                                     <i class="input-icon material-icons">lock</i>
                                                 </div>
 
@@ -586,23 +631,36 @@
                                                 <h4 class="heading">Sign Up</h4>
                                                 <div class="form-group">
                                                     <input type="text" class="form-style" placeholder="Your Name"
-                                                        autocomplete="off">
+                                                        autocomplete="off" name="name">
                                                     <i class="input-icon material-icons">perm_identity</i>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <input type="email" class="form-style" placeholder="Your Email"
-                                                        autocomplete="off">
+                                                        autocomplete="off" name="email">
                                                     <i class="input-icon material-icons">alternate_email</i>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <input type="password" class="form-style"
-                                                        placeholder="Your Password" autocomplete="off">
-                                                    <i class="input-icon material-icons">lock</i>
+                                                    <input type="number" class="form-style" placeholder="Your Mobile Number"
+                                                        autocomplete="off" name="mobile">
+                                                    <i class="input-icon material-icons">phone</i>
                                                 </div>
 
-                                                <a href="#" class="btn">Submit</a>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-style"
+                                                        placeholder="Your Password" autocomplete="off" name="password">
+                                                    <i class="input-icon material-icons">lock</i>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select id="dropdown" class="form-style" name="department">
+                                                        <option value="" disabled selected>Select Department</option>
+                                                        
+                                                    </select>
+                                                    <i class="input-icon material-icons">school</i>
+                                                </div>
+                                                <input type="submit" name="btnRegister" class="btn" value="Register"></input>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -614,6 +672,23 @@
             </div>
         </div>
     </section>
+    <script>
+        // Fetch JSON data from PHP file
+        fetch('../api/list_dept.php')
+            .then(response => response.json())
+            .then(data => {
+                let dropdown = document.getElementById('dropdown');
+                dropdown.innerHTML = '<option value="">Select Your Department</option>'; // Reset first option
+
+                data.forEach(item => {
+                    let option = document.createElement('option');
+                    option.value = item.id;
+                    option.textContent = item.department_name;
+                    dropdown.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
 </body>
 
 </html>
