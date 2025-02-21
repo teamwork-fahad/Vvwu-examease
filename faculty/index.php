@@ -2,7 +2,9 @@
     session_start();
     $faculty_email=$_SESSION['email'];
     if (!isset($faculty_email)) {
-        header('location: login.php');
+        echo "<script>alert('Your session has expired or you have logged out. Please login again to access this page.');</script>";
+        header('Refresh: 0; url=login.php');
+        exit();
     }
 ?>
 <!DOCTYPE html>
@@ -35,15 +37,15 @@
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="card text-center p-4 dashboard-card">
-                    <i class="fas fa-calendar-check"></i>
-                    <a href="#" class="stretched-link text-decoration-none">Manage Attendance</a>
+                    <i class="fas fa-users"></i>
+                    <a href="manage_students.php" class="stretched-link text-decoration-none">Manage Students</a>
                 </div>
-            </div>
+            </div> 
 
             <div class="col-md-4">
                 <div class="card text-center p-4 dashboard-card">
                     <i class="fas fa-book-reader"></i>
-                    <a href="#" class="stretched-link text-decoration-none">Manage Hall Ticket</a>
+                    <a href="manage_hall_ticket.php" class="stretched-link text-decoration-none">Manage Hall Ticket</a>
                 </div>
             </div>
 
@@ -59,7 +61,7 @@
                     <a href="#" class="stretched-link text-decoration-none">Exam Time Table</a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="card text-center p-4 dashboard-card">
                     <i class="fas fa-chart-line"></i>
                     <a href="#" class="stretched-link text-decoration-none">Students Marks</a>
@@ -70,7 +72,7 @@
                     <i class="fas fa-money-check-alt"></i>
                     <a href="#" class="stretched-link text-decoration-none">Students Fees Verify</a>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4">
                 <div class="card text-center p-4 dashboard-card">
                     <i class="fas fa-key"></i>
