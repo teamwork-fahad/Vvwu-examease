@@ -69,12 +69,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="profile-card text-center">
-                    <i class="fas fa-user-circle profile-icon"></i>
+                    <?php if ($profile_photo == 'no_photo.png'): ?>
+                        <i class="fas fa-user-circle profile-icon"></i>
+                    <?php else: ?>
+                        <img src="<?php echo $profile_photo; ?>" alt="Profile Photo" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+                    <?php endif; ?>
                     <h2 class="my-3"><?php echo $faculty_name; ?></h2>
                     <p><strong>Department:</strong> <?php echo $department_name;?></p>
                     <p><strong>Email:</strong> <?php echo $email;?></p>
                     <p><strong>Phone:</strong> <?php echo $phone;?></p>
-                    <a href="#" class="btn btn-success mt-3">Edit Profile</a>
+                    <a href="edit_profile.php" class="btn btn-success mt-3">Edit Profile</a>
                 </div>
             </div>
         </div>
