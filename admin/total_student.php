@@ -64,7 +64,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <div class="page-header-title">
-                                <h5 class="m-b-10">Total available faculty</h5>
+                                <h5 class="m-b-10">Total available Students</h5>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -86,44 +86,41 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Register Faculty</h5>
+                            <h5>Register Students</h5>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>#</th>
-                                        <th>Faculty Name</th>
+                                        <th>Enrollment Number</th>
+                                        <th>Student Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        <th>Department</th>
-                                        
+                                        <th>Department</th>                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     include_once('../connection.php'); // Include your database connection file
 
-                                    $query = "SELECT department_name,`faculty_id`, `faculty_name`, `email`, `phone`, `did`, `pass`, `profile_photo`, `status`
-                                     FROM `faculty` f
-                                     join departments d  
-                                     on f.did=d.id";
+                                    $query = "SELECT `enrollment_number`, `student_name`, `email`, `phone_number`
+                                     FROM `student`
+                                     order by enrollment_number";
                     
                                     $result = mysqli_query($conn, $query);
 
                                     if (mysqli_num_rows($result) > 0) {
-                                        $counter = 1;
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>";
-                                            echo "<td>" . $counter++ . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['faculty_name']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['enrollment_number']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['student_name']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['department_name']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['phone_number']) . "</td>";
+                                            echo "<td>IT</td>";
                                             echo "</tr>";
                                         }
                                     } else {
-                                        echo "<tr><td colspan='5'>No faculty found</td></tr>";
+                                        echo "<tr><td colspan='5'>No students found</td></tr>";
                                     }
 
                                     mysqli_close($conn);

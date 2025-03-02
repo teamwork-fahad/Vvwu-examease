@@ -17,9 +17,7 @@
             <span class="pc-mtext">Faculty</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
         <ul class="pc-submenu">
             <li class="pc-item"><a class="pc-link" href="faculty_avl.php">Total Register</a></li>
-            <li class="pc-item"><a class="pc-link" href="faculty_new.php">New Request</a></li>
-            <li class="pc-item"><a class="pc-link" href="faculty_reject.php">Reject</a></li>
-
+           
 
         </ul>
     </li>
@@ -28,9 +26,8 @@
                 <i class="ti ti-user"></i></span>
             <span class="pc-mtext">Students</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
         <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="#!">Total Register</a></li>
-            <li class="pc-item"><a class="pc-link" href="#!">New Request</a></li>
-            <li class="pc-item"><a class="pc-link" href="#!">Reject</a></li>
+            <li class="pc-item"><a class="pc-link" href="total_student.php">Total Register</a></li>
+            
 
 
         </ul>

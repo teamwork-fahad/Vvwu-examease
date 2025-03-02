@@ -201,31 +201,40 @@
             <!-- [ Main Content ] start -->
             <div class="row">
             <div class="container bootstrap snippet">
-  <div class="row">
+<div class="row">
     <div class="col-lg-2 col-sm-6">
-      <div class="circle-tile ">
-        <a href="#"><div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
-        <div class="circle-tile-content dark-blue">
-          <div class="circle-tile-description text-faded"> Students</div>
-          <div class="circle-tile-number text-faded ">265</div>
-          <a class="circle-tile-footer" href="#">More Info<i class="fa fa-chevron-circle-right"></i></a>
+        <div class="circle-tile ">
+            <a href="#"><div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+            <div class="circle-tile-content dark-blue">
+                <div class="circle-tile-description text-faded"> Students</div>
+                <div class="circle-tile-number text-faded " id="student-count">0</div>
+                <a class="circle-tile-footer" href="total_student.php">More Info<i class="fa fa-chevron-circle-right"></i></a>
+            </div>
         </div>
-      </div>
     </div>
      
     <div class="col-lg-2 col-sm-6">
-      <div class="circle-tile ">
-        <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
-        <div class="circle-tile-content red">
-          <div class="circle-tile-description text-faded"> Faculty </div>
-          <div class="circle-tile-number text-faded ">10</div>
-          <a class="circle-tile-footer" href="#">More Info<i class="fa fa-chevron-circle-right"></i></a>
-        </div>
-      </div>
-    </div> 
-  </div> 
-</div>  
+        <div class="circle-tile ">
+            <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+            <div class="circle-tile-content red">
+                <div class="circle-tile-description text-faded"> Faculty </div>
+                <div class="circle-tile-number text-faded " id="faculty-count">0</div>
+                <a class="circle-tile-footer" href="faculty_avl.php">More Info<i class="fa fa-chevron-circle-right"></i></a>
             </div>
+        </div>
+    </div> 
+</div> 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('http://localhost/Vvwu%20examease/api/count_data.php')
+            .then(response => response.json())
+            .then(data => {
+                 document.getElementById('student-count').textContent = data.student_count;
+                document.getElementById('faculty-count').textContent = data.faculty_count;
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
+</script>
             <!-- [ Main Content ] end -->
         </div>
     </div>
