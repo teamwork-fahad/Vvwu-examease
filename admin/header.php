@@ -115,14 +115,11 @@
                          <div class="profile-notification-scroll position-relative"
                              style="max-height: calc(100vh - 280px)">
 
-                             <a href="" class="dropdown-item">
+                             <a href="change_pwd.php" class="dropdown-item">
                                  <i class="ti ti-settings"></i>
                                  <span>Change Password</span>
                              </a>
-                             <a href="" class="dropdown-item">
-                                 <i class="ti ti-user"></i>
-                                 <span>View Profile</span>
-                             </a>
+                            
                              <a href="logout.php" class="dropdown-item">
                                  <i class="ti ti-logout"></i>
                                  <span>Logout</span>

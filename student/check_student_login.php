@@ -26,6 +26,7 @@
         if (mysqli_num_rows($result) == 1) {
             // Login successful
             $_SESSION['student_email'] = $email;
+            $_SESSION['student_id'] = mysqli_fetch_assoc($result)['student_id'];
             echo "<script>
                 Swal.fire({
                     title: 'Success!',
