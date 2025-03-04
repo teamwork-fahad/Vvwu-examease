@@ -61,13 +61,13 @@
                     <a href="https://drive.google.com/file/d/1wkB-ffNYU2xKfD8nmwbcrxl57bTz7q5F/view" target="_blank" class="stretched-link text-decoration-none">Exam Time Table</a>
                 </div>
             </div>
-            <!-- <div class="col-md-4">
+             <div class="col-md-4">
                 <div class="card text-center p-4 dashboard-card">
                     <i class="fas fa-chart-line"></i>
-                    <a href="#" class="stretched-link text-decoration-none">Students Marks</a>
+                    <a href="generate_seating_arrangement.php" class="stretched-link text-decoration-none">Seating Arrangement</a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="card text-center p-4 dashboard-card">
                     <i class="fas fa-money-check-alt"></i>
                     <a href="#" class="stretched-link text-decoration-none">Students Fees Verify</a>
