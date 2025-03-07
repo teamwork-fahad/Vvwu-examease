@@ -58,7 +58,7 @@
             <div class="col-md-4">
                 <div class="card text-center p-4 dashboard-card">
                     <i class="fas fa-calendar-alt"></i>
-                    <a href="https://drive.google.com/file/d/1wkB-ffNYU2xKfD8nmwbcrxl57bTz7q5F/view" target="_blank" class="stretched-link text-decoration-none">Exam Time Table</a>
+                    <a href="list_exam_time_table.php" class="stretched-link text-decoration-none">Exam Time Table</a>
                 </div>
             </div>
              <div class="col-md-4">
