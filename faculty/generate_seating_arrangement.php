@@ -10,6 +10,8 @@
     </style>
 </head>
 <body>
+    <br/>
+<a class="btn btn-primary" href="set_classroom_layout.php">Set Class Room Layout</a>
     <div class="container border p-4">
         <h3 class="text-center">ATKT Examination Form</h3>
         <form action="seating_arrangement.php" method="POST">
